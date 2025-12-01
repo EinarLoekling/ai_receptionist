@@ -38,6 +38,7 @@
       main {
         width: 100%;
         max-width: 540px;
+        margin: 0 auto;
       }
 
       /* BIG LOGO */
@@ -74,7 +75,7 @@
         height: 80px;
         border-radius: 999px;
         object-fit: cover;
-        border: 2px solid rgba(245, 193, 91, 0.6);
+        border: 2px solid rgba(245, 193, 91, 0.7);
         box-shadow: 0 8px 18px rgba(0, 0, 0, 0.7);
       }
 
@@ -138,22 +139,22 @@
     <main>
       <!-- Kineticus Logo -->
       <div class="logo">
-        <img src="assets/kineticus_logo_white.png" alt="Kineticus" />
+        <img src="assets/kineticus_logo_blue.png" alt="Kineticus" />
       </div>
 
       <!-- Einar & Espen -->
       <div class="founders">
         <div class="founder">
-          <img src="assets/einar.png" alt="Einar" />
+          <img src="assets/kineticus_einar.png" alt="Einar Hjelle Løkling" />
           <div class="founder-name">Einar Hjelle Løkling</div>
         </div>
         <div class="founder">
-          <img src="assets/espen.png" alt="Espen" />
+          <img src="assets/kineticus_espen.png" alt="Espen Kalvatn Morten" />
           <div class="founder-name">Espen Kalvatn Morten</div>
         </div>
       </div>
 
-      <!-- Widget (idle placeholder) -->
+      <!-- Widget -->
       <div class="widget-frame">
         <elevenlabs-convai
           agent-id="agent_2501kba0rxdxexnr3a5bnqr0car0"
@@ -169,8 +170,9 @@
 
     <!-- ElevenLabs script -->
     <script
-      src="https://unpkg.com/@elevenlabs/convai-widget-embed"
+      src="https://unpkg.com/@elevenlabs/convai-widget-embed@beta"
       async
+      type="text/javascript"
     ></script>
   </body>
 </html>
