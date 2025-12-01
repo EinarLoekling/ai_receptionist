@@ -1,7 +1,287 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>AI Receptionist | Kineticus</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Optional: Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg: #050505;
+        --card: #111111;
+        --accent: #f5c15b;
+        --text-main: #f5f5f5;
+        --text-muted: #b5b5b5;
+        --border-subtle: #262626;
+        --radius-xl: 18px;
+        --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.7);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: radial-gradient(circle at top, #151515 0, #050505 55%);
+        color: var(--text-main);
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 16px;
+      }
+
+      .page {
+        width: 100%;
+        max-width: 1000px;
+      }
+
+      .logo {
+        font-weight: 600;
+        letter-spacing: 0.25em;
+        font-size: 13px;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-bottom: 18px;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+        gap: 36px;
+        margin-bottom: 32px;
+      }
+
+      @media (max-width: 850px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .hero-title {
+        font-size: clamp(30px, 3.1vw, 38px);
+        line-height: 1.15;
+        margin: 0 0 14px 0;
+      }
+
+      .hero-subtitle {
+        font-size: 15px;
+        line-height: 1.7;
+        color: var(--text-muted);
+        margin-bottom: 18px;
+      }
+
+      .hero-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 10px;
+      }
+
+      .hero-tag-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: radial-gradient(circle, #ffe9a3, #f5c15b);
+        box-shadow: 0 0 12px rgba(245, 193, 91, 0.85);
+      }
+
+      .hero-list {
+        padding: 0;
+        margin: 0 0 12px 0;
+        list-style: none;
+        font-size: 14px;
+        color: var(--text-muted);
+      }
+
+      .hero-list li {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 6px;
+      }
+
+      .hero-list li::before {
+        content: "•";
+        color: var(--accent);
+        margin-top: 1px;
+      }
+
+      .hero-meta {
+        font-size: 12px;
+        color: #777;
+      }
+
+      .hero-meta span {
+        color: var(--text-main);
+        font-weight: 500;
+      }
+
+      .hero-right {
+        background: radial-gradient(circle at top left, #2a2114 0, #111 50%);
+        border-radius: var(--radius-xl);
+        border: 1px solid var(--border-subtle);
+        padding: 18px 18px 16px;
+        box-shadow: var(--shadow-soft);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-right-label {
+        font-size: 11px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-bottom: 8px;
+      }
+
+      .hero-right-card {
+        background: rgba(5, 5, 5, 0.8);
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 12px 14px;
+        font-size: 13px;
+        color: var(--text-muted);
+      }
+
+      .hero-right-card b {
+        color: var(--text-main);
+      }
+
+      .widget-section {
+        margin-top: 18px;
+        background: rgba(5, 5, 5, 0.95);
+        border-radius: var(--radius-xl);
+        border: 1px solid var(--border-subtle);
+        padding: 18px;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .widget-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 12px;
+        gap: 10px;
+      }
+
+      .widget-title {
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .widget-sub {
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      .widget-hint {
+        font-size: 11px;
+        color: var(--text-muted);
+        margin-bottom: 10px;
+      }
+
+      .widget-shell {
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        background: #050505;
+      }
+
+      .powered {
+        margin-top: 10px;
+        text-align: right;
+        font-size: 11px;
+        color: #666;
+      }
+
+      .powered a {
+        color: #888;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+
   <body>
-    <elevenlabs-convai agent-id="agent_2501kba0rxdxexnr3a5bnqr0car0"></elevenlabs-convai>
-    <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async></script>
+    <main class="page">
+      <div class="logo">KINETICUS</div>
+
+      <section class="hero">
+        <div>
+          <div class="hero-tag">
+            <span class="hero-tag-dot"></span>
+            <span>AI Receptionist</span>
+          </div>
+          <h1 class="hero-title">
+            Book qualified sales calls while you sleep – without a human
+            receptionist.
+          </h1>
+          <p class="hero-subtitle">
+            Jess, our AI Receptionist, answers questions, filters out
+            non-qualified leads, and books meetings directly into your calendar.
+          </p>
+
+          <ul class="hero-list">
+            <li>24/7 coverage – no missed inbound interest.</li>
+            <li>Pre-qualifies prospects before they ever hit your calendar.</li>
+            <li>Trained on Kineticus’ exact offers, cases and process.</li>
+          </ul>
+
+          <p class="hero-meta">
+            Designed by <span>Einar Hjelle Løkling</span> · CEO @ Kineticus
+          </p>
+        </div>
+
+        <div class="hero-right">
+          <div class="hero-right-label">What you’re seeing</div>
+          <div class="hero-right-card">
+            <b>Live demo of Jess</b>, our AI Receptionist.<br />
+            Ask about pricing, who we work with, or how the system works. If
+            you’re a fit, she’ll help you request a strategy call.
+          </div>
+
+          <section class="widget-section">
+            <div class="widget-header">
+              <div class="widget-title">Talk to Jess</div>
+              <div class="widget-sub">Turn your sound on & allow mic access</div>
+            </div>
+            <p class="widget-hint">
+              Ask something like: “How does Kineticus help B2B founders get
+              inbound leads?” or “Who is this a good fit for?”
+            </p>
+
+            <div class="widget-shell">
+              <!-- ElevenLabs widget -->
+              <elevenlabs-convai
+                agent-id="agent_2501kba0rdxexnr3a5bnqr0car0"
+              ></elevenlabs-convai>
+            </div>
+
+            <div class="powered">
+              Powered by <a href="https://elevenlabs.io" target="_blank">ElevenLabs Agents</a>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <!-- ElevenLabs script -->
+    <script
+      src="https://unpkg.com/@elevenlabs/convai-widget-embed"
+      async
+      type="text/javascript"
+    ></script>
   </body>
 </html>
