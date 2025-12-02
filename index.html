@@ -8,104 +8,65 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="browser.png" />
 
-    <!-- Font -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-
     <style>
-      :root {
-        --bg: #050505;
-        --card: #111111;
-        --accent: #00aaff;
-        --text-main: #f5f5f5;
-        --text-muted: #b5b5b5;
-        --radius-xl: 18px;
-        --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.7);
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
       body {
         margin: 0;
-        min-height: 100vh;
+        padding: 0;
         background: radial-gradient(circle at center, #111 0%, #050505 65%);
-        color: var(--text-main);
-        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
-          "Segoe UI", sans-serif;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 40px 16px;
+        color: #f5f5f5;
+        font-family: "Inter", sans-serif;
+        text-align: center;
       }
 
-      /* LOGO */
       .logo {
-        margin-top: 20px;
-        margin-bottom: 10px;
-        text-align: center;
+        margin-top: 40px;
       }
 
       .logo img {
         width: 260px;
-        max-width: 80%;
       }
 
-      /* TAGLINE */
       .tagline {
-        text-align: center;
-        margin-bottom: 30px;
+        margin-top: 14px;
         font-size: 16px;
       }
 
       .tagline b {
-        color: var(--accent);
+        color: #00aaff;
       }
 
-      /* WIDGET WRAPPER */
+      /* Centering wrapper */
       .widget-wrapper {
-        width: 100%;
-        max-width: 420px;
-        margin: 0 auto;
-        padding: 20px 0;
+        margin-top: 40px;
         display: flex;
         justify-content: center;
+        width: 100%;
       }
 
       elevenlabs-convai {
-        width: 100%;
         max-width: 420px;
+        width: 100%;
       }
     </style>
   </head>
 
   <body>
-    <!-- Logo -->
     <div class="logo">
       <img src="assets/kineticus_logo_blue.png" alt="Kineticus Logo" />
     </div>
 
-    <!-- Tagline -->
     <div class="tagline">
-      Call our AI receptionist <b>Jess</b> to book a call with <b>Einar</b> or
-      <b>Espen</b>.
+      Call our AI receptionist <b>Jess</b> to book a call with
+      <b>Einar</b> or <b>Espen</b>.
     </div>
 
-    <!-- WIDGET -->
     <div class="widget-wrapper">
-      <elevenlabs-convai
-        agent-id="agent_2501kba0rxdxexnr3a5bnqr0car0"
-      ></elevenlabs-convai>
+      <elevenlabs-convai agent-id="agent_2501kba0rxdxexnr3a5bnqr0car0"></elevenlabs-convai>
     </div>
 
-    <!-- ElevenLabs script -->
     <script
       src="https://unpkg.com/@elevenlabs/convai-widget-embed@beta"
       async
-      type="text/javascript"
     ></script>
   </body>
 </html>
